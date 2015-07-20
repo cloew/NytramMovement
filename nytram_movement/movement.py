@@ -1,4 +1,5 @@
 from nytram.engine import Time
+from nytram.vector import Vec3
 
 class Movement:
     """ Represents Movement behavior for an Entity """
@@ -10,5 +11,5 @@ class Movement:
     
     def update(self):
         """ Update the behavior """
-        self.direction = self.directions[0].directionVector
+        self.direction = sum([direction.directionVector for direction in self.directions], Vec3(0,0,0))
         self.entity.transform.position += (self.direction*(self.speed*Time.sinceLastFrame()/1000.0))
