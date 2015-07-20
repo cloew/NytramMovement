@@ -9,6 +9,14 @@ class Direction:
         self.direction = Vec3(direction).unitVector
         self.moving = False
         
+    def start(self, event=None):
+        """ Start the movement """
+        self.moving = True
+        
+    def stop(self, event=None):
+        """ Stop the movement """
+        self.moving = False
+        
     def toggle(self, event=None):
         """ Toggle whether this direction is being used for movement """
         self.moving = not self.moving
