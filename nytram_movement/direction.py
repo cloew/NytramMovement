@@ -21,6 +21,15 @@ class Direction:
         """ Toggle whether this direction is being used for movement """
         self.moving = not self.moving
         
+    def startOrStop(self, startWhen=lambda event: False):
+        """ Returns a method that will either start or stop based on the result of the startWhen funciton provided """
+        def run(event):
+            if startWhen(event):
+                self.start()
+            else:
+                self.stop()
+        return run
+        
     @property
     def directionVector(self):
         """ Return the direction vector """
